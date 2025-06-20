@@ -29,101 +29,18 @@
         <!-- Top Center: Barra de Polícia -->
         <div id="police-heat-panel">
             <p>POLICE HEAT</p>
-            <div id="heat-bar">
-                <div id="heat-level"></div>
-            </div>
+            <div id="heat-bar"><div id="heat-level"></div></div>
         </div>
 
-         <!-- Top Right: Nível de Risco/Corrupção -->
+         <!-- Top Right: Placeholder ou Info (Ex: Nível de Risco Global) -->
         <div id="top-right-info">
-             <p>💀 <span id="risk-level">0</span>%</p>
+             <!-- Usar um ícone e texto simples -->
+             <img src="caminho/para/icone-skull.png" alt="Risco">
+             <p><span id="risk-level">0</span>%</p>
         </div>
 
-
-        <!-- Painel Principal à Direita (Conteúdo das Abas) -->
-        <div id="main-panel">
-             <div id="tab-content">
-                <!-- Aba Estado: Dashboard Principal -->
-                <div id="state" class="tab-pane active">
-                    <h2>Painel de Gestão</h2>
-                    <div id="state-summary">
-                        <p>Dinheiro Sujo: $<span id="money-summary">0</span></p>
-                        <p>Dinheiro Limpo: $<span id="launderedMoney-summary">0</span></p>
-                        <p>Renda por Segundo: $<span id="incomePerSecond">1</span></p>
-                    </div>
-                </div>
-
-                <!-- Aba Produção -->
-                <div id="production" class="tab-pane">
-                    <h2>Produção Clandestina</h2>
-                    <div class="production-option" data-production-type="basic-documents">
-                        <p>Documentos Falsos (Básico) <br> Custo: $200 Lícito <br> Retorno: $800 Sujo (4s)</p>
-                        <button class="start-production-button">Iniciar Produção</button>
-                        <!-- Elemento para mostrar progresso/status se necessário -->
-                         <div class="production-status"></div>
-                    </div>
-                    <div class="production-option" data-production-type="premium-documents">
-                        <p>Documentos Falsos (Premium) <br> Custo: $750 Limpo <br> Retorno: $1000 Sujo (4s)</p>
-                        <button class="start-production-button">Iniciar Produção</button>
-                         <div class="production-status"></div>
-                    </div>
-                     <!-- Adicionar status geral da produção ou slots de produção -->
-                </div>
-
-                <!-- Aba Lavagem -->
-                <div id="lavagem" class="tab-pane">
-                    <h2>Lavagem de Dinheiro</h2>
-                    <div class="action-item">
-                        <p>Lavar Dinheiro <br> Custo: $<span id="wash-cost-display">?</span> Sujo <br> Retorno: $<span id="wash-amount-display">?</span> Limpo <br> Risco: <span id="wash-risk-display">?</span>%</p>
-                         <button id="wash-money-button">Lavar</button>
-                    </div>
-                     <!-- Podemos adicionar opções de lavagem com risco/custo diferente -->
-                </div>
-
-                 <!-- Aba Segurança -->
-                <div id="security" class="tab-pane">
-                    <h2>Melhorias de Segurança</h2>
-                    <div class="attribute-item">
-                        <p>Falsificação: Nível <span id="attr-falsification-level">0</span> <br> Bônus Renda: +$<span id="attr-falsification-bonus">0</span>/segundo</p>
-                        <button class="upgrade-button" data-attribute="falsification">Melhorar (Custo: $<span id="attr-falsification-cost">?</span> Limpo)</button>
-                    </div>
-                    <div class="attribute-item">
-                        <p>Influência: Nível <span id="attr-influence-level">0</span> <br> Bônus Renda: +$<span id="attr-influence-bonus">0</span>/segundo</p>
-                        <button class="upgrade-button" data-attribute="influence">Melhorar (Custo: $<span id="attr-influence-cost">?</span> Limpo)</button>
-                    </div>
-                     <!-- Outros atributos de segurança que afetam heat, bribe chance -->
-                     <div class="attribute-item">
-                         <p>Intimidação: Nível <span id="attr-intimidation-level">0</span> <br> Reduz Heat: <span id="attr-intimidation-heat-reduction">0</span>/segundo <br> Aumenta Suborno: <span id="attr-intimidation-bribe-bonus">0</span>%</p>
-                         <button class="upgrade-button" data-attribute="intimidation">Melhorar (Custo: $<span id="attr-intimidation-cost">?</span> Limpo)</button>
-                     </div>
-                </div>
-
-                 <!-- Aba Relatório -->
-                <div id="report" class="tab-pane">
-                     <h2>Relatórios Gerenciais</h2>
-                     <div id="report-stats">
-                         <p>Renda Total/s: $<span id="report-income">1</span></p>
-                         <p>Dinheiro Lavado Total: $<span id="report-total-laundered">0</span></p>
-                         <p>Dinheiro Perdido (Polícia): $<span id="report-lost-police">0</span></p>
-                          <!-- Placeholder para "corrupção" - como mediríamos isso? -->
-                         <p>Nível de Corrupção: <span id="report-corruption-level">Baixo</span></p>
-                          <p>Chance de Suborno: <span id="report-bribe-chance">0</span>%</p>
-                         <!-- Adicionar outros stats importantes -->
-                     </div>
-                </div>
-
-                <!-- Aba Log -->
-                <div id="notifications" class="tab-pane">
-                    <h2>Registro de Eventos</h2>
-                    <div id="notification-area">
-                        <!-- Notificações aparecerão aqui -->
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Bottom Center: Botões das Abas (Com Ícones) -->
-        <div id="bottom-tabs">
+        <!-- Left Side: Botões das Abas (Verticais) -->
+        <div id="left-tabs">
              <!-- Ícone de Produção -->
              <button class="tab-button active" data-tab="production">
                  <img src="caminho/para/icone-producao.png" alt="Produção">
@@ -144,10 +61,106 @@
              <button class="tab-button" data-tab="report">
                  <img src="caminho/para/icone-relatorio.png" alt="Relatório">
              </button>
-             <!-- Ícone de Log (Notificações) - Opcional, se quiser uma aba separada -->
+             <!-- Opcional: Ícone de Log se for aba separada -->
              <!-- <button class="tab-button" data-tab="notifications">
                  <img src="caminho/para/icone-log.png" alt="Log">
              </button> -->
+        </div>
+
+        <!-- Painel Principal à Direita (Conteúdo das Abas) -->
+        <div id="main-panel">
+             <div id="tab-content">
+                 <!-- Conteúdo das abas como definido anteriormente -->
+                 <!-- Aba Produção -->
+                 <div id="production" class="tab-pane active">
+                     <h2>Produção Clandestina</h2>
+                     <div class="production-option" data-production-type="basic-documents">
+                         <p>Documentos Falsos (Básico) <br> Custo: $<span id="prod-basic-cost">?</span> Lícito <br> Retorno: $<span id="prod-basic-yield">?</span> Sujo (4s)</p>
+                         <button class="start-production-button" data-production-type="basic-documents">Iniciar Produção</button>
+                          <div class="production-status"></div>
+                     </div>
+                     <div class="production-option" data-production-type="premium-documents">
+                         <p>Documentos Falsos (Premium) <br> Custo: $<span id="prod-premium-cost">?</span> Limpo <br> Retorno: $<span id="prod-premium-yield">?</span> Sujo (4s)</p>
+                         <button class="start-production-button" data-production-type="premium-documents">Iniciar Produção</button>
+                          <div class="production-status"></div>
+                     </div>
+                 </div>
+
+                 <!-- Aba Logística (Placeholder) -->
+                 <div id="logistica" class="tab-pane">
+                     <h2>Logística e Entrega</h2>
+                     <p>Conteúdo da aba Logística...</p>
+                      <!-- Estrutura para Frota de Veículos, Entregas, Comprar Veículos -->
+                      <div class="logistics-section">
+                          <h3>Estoque Não Vendido</h3>
+                          <p>Documentos Falsos: <span id="stock-documents">0</span></p>
+                          <p>Armas Leves: <span id="stock-weapons">0</span></p>
+                          <p>Químicos Sintéticos: <span id="stock-chemicals">0</span></p>
+                      </div>
+                       <div class="logistics-section">
+                           <h3>Frota de Veículos (<span id="fleet-size">0</span>)</h3>
+                           <p><span id="fleet-details">Nenhum veículo na frota.</span></p>
+                           <h3>Entregas em Andamento (<span id="deliveries-in-progress">0</span>)</h3>
+                           <p><span id="delivery-details">Nenhuma entrega em andamento.</span></p>
+                       </div>
+                        <div class="logistics-section">
+                            <h3>Comprar Veículos</h3>
+                            <div class="vehicle-option">
+                                 <p>Van de Carga <br> Capacidade: 5 lotes <br> Custo: $<span id="vehicle-van-cost">7.500</span> Limpo</p>
+                                 <button id="buy-van-button">Comprar</button>
+                            </div>
+                        </div>
+
+                 </div>
+
+                 <!-- Aba Lavagem -->
+                 <div id="lavagem" class="tab-pane">
+                     <h2>Lavagem de Dinheiro</h2>
+                     <div class="action-item">
+                         <p>Lavar Dinheiro <br> Custo: $<span id="wash-cost-display">?</span> Sujo <br> Retorno: $<span id="wash-amount-display">?</span> Limpo <br> Risco: <span id="wash-risk-display">?</span>%</p>
+                          <button id="wash-money-button">Lavar</button>
+                     </div>
+                 </div>
+
+                  <!-- Aba Segurança -->
+                 <div id="security" class="tab-pane">
+                     <h2>Melhorias de Segurança</h2>
+                     <div class="attribute-item">
+                         <p>Falsificação: Nível <span id="attr-falsification-level">0</span> <br> Bônus Renda: +$<span id="attr-falsification-bonus">0</span>/segundo</p>
+                         <button class="upgrade-button" data-attribute="falsification">Melhorar (Custo: $<span id="attr-falsification-cost">?</span> Limpo)</button>
+                     </div>
+                     <div class="attribute-item">
+                         <p>Influência: Nível <span id="attr-influence-level">0</span> <br> Bônus Renda: +$<span id="attr-influence-bonus">0</span>/segundo</p>
+                         <button class="upgrade-button" data-attribute="influence">Melhorar (Custo: $<span id="attr-influence-cost">?</span> Limpo)</button>
+                     </div>
+                      <div class="attribute-item">
+                          <p>Intimidação: Nível <span id="attr-intimidation-level">0</span> <br> Reduz Heat: <span id="attr-intimidation-heat-reduction">0</span>/segundo <br> Bônus Suborno Lavagem: <span id="attr-intimidation-wash-bribe-bonus">0</span>%</p> <!-- Ajustado nome para clareza -->
+                          <button class="upgrade-button" data-attribute="intimidation">Melhorar (Custo: $<span id="attr-intimidation-cost">?</span> Limpo)</button>
+                      </div>
+                 </div>
+
+                  <!-- Aba Relatório -->
+                 <div id="report" class="tab-pane">
+                      <h2>Relatórios Gerenciais</h2>
+                      <div id="report-stats">
+                          <p>Renda Total/s: $<span id="report-income">1</span></p>
+                          <p>Dinheiro Lavado Total: $<span id="report-total-laundered">0</span></p>
+                          <p>Dinheiro Perdido (Polícia): $<span id="report-lost-police">0</span></p>
+                          <p>Nível de Corrupção: <span id="report-corruption-level">Baixo</span></p>
+                           <p>Chance de Não Ser Pego (Lavagem): <span id="report-wash-success-chance">?</span>%</p> <!-- Nome mais claro -->
+                           <p>Chance de Suborno (Geral): <span id="report-general-bribe-chance">?</span>%</p> <!-- Placeholder para futuro -->
+                          <!-- Adicionar outros stats importantes -->
+                      </div>
+                 </div>
+
+                 <!-- Aba Log -->
+                 <div id="notifications" class="tab-pane">
+                     <h2>Registro de Eventos</h2>
+                     <div id="notification-area">
+                         <!-- Notificações aparecerão aqui -->
+                     </div>
+                 </div>
+             </div>
         </div>
 
         <!-- Bottom Left: Ícone de Configurações -->
@@ -168,7 +181,7 @@
     <script src="js/ui.js"></script>
     <script src="js/notifications.js"></script>
     <script src="js/gameLoop.js"></script>
-    <script src="js/actions.js"></script> <!-- Renomearemos para actions.js e production.js? ou manter? -->
+    <script src="js/actions.js"></script>
     <script src="js/tabs.js"></script>
     <script src="js/script.js"></script>
 </body>
