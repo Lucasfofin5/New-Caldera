@@ -1,105 +1,182 @@
-/* css/style.css */
+/* css/style.css - Tema Neon Roxo */
+
+:root {
+    --purple-neon: #ee00ff; /* Roxo neon vibrante */
+    --dark-purple: #4b0082; /* Roxo mais escuro para fundo */
+    --deep-space: #1a1a2e; /* Fundo bem escuro */
+    --glow-color: rgba(238, 0, 255, 0.6); /* Cor para o brilho */
+}
 
 body {
-    font-family: sans-serif;
+    font-family: 'Arial', sans-serif; /* Pode mudar para uma fonte mais cyber se quiser */
     line-height: 1.6;
     margin: 0;
     padding: 20px;
-    background-color: #f4f4f4;
-    color: #333;
-    display: flex; /* Usa flexbox para centralizar o conteúdo */
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: flex-start; /* Alinha ao topo verticalmente */
-    min-height: 100vh; /* Garante que o corpo ocupe a altura total da viewport */
+    background-color: var(--deep-space); /* Fundo escuro */
+    color: #c0c0c0; /* Cor de texto padrão clara */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
 }
 
 .container {
-    background-color: #fff;
+    background-color: var(--dark-purple); /* Fundo do contêiner roxo escuro */
     padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    max-width: 800px; /* Limita a largura máxima do conteúdo */
-    width: 100%; /* Ocupa 100% da largura disponível dentro do max-width */
+    box-shadow: 0 0 20px var(--glow-color); /* Sombra com brilho neon */
+    max-width: 900px; /* Aumenta um pouco a largura */
+    width: 100%;
+    border: 2px solid var(--purple-neon); /* Borda neon */
 }
 
 h1, h2 {
-    color: #555;
-    border-bottom: 1px solid #eee;
+    color: var(--purple-neon); /* Títulos em roxo neon */
+    text-shadow: 0 0 8px var(--glow-color); /* Efeito de brilho no texto */
+    border-bottom: 1px solid var(--glow-color); /* Borda inferior brilhante */
     padding-bottom: 10px;
     margin-bottom: 20px;
 }
 
-#game-state p {
-    margin: 5px 0;
-    font-size: 1.1em;
+/* Estilo para as Abas */
+#tabs {
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--glow-color);
+    padding-bottom: 5px;
 }
 
-#actions, #attributes, #notifications {
-    margin-bottom: 30px;
-}
-
-button {
-    display: inline-block; /* Garante que o botão possa ter margin/padding */
-    background-color: #5cb85c; /* Verde */
-    color: white;
+.tab-button {
+    background-color: transparent; /* Botão transparente */
+    color: #c0c0c0; /* Cor do texto */
     padding: 10px 15px;
+    border: none;
+    border-bottom: 3px solid transparent; /* Borda para indicar aba ativa */
+    cursor: pointer;
+    font-size: 1.1em;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+}
+
+.tab-button:hover:not(:disabled) {
+    color: var(--purple-neon); /* Cor neon no hover */
+    text-shadow: 0 0 5px var(--glow-color);
+}
+
+.tab-button.active {
+    color: var(--purple-neon); /* Cor neon para aba ativa */
+    border-bottom-color: var(--purple-neon); /* Borda inferior neon para aba ativa */
+    text-shadow: 0 0 5px var(--glow-color);
+}
+
+.tab-button:disabled {
+    color: #555; /* Cor para botão desabilitado */
+    cursor: not-allowed;
+}
+
+/* Estilo para o conteúdo das abas */
+.tab-pane {
+    display: none; /* Oculta todas as abas por padrão */
+}
+
+.tab-pane.active {
+    display: block; /* Exibe a aba ativa */
+}
+
+
+#game-state p, .attribute p {
+    margin: 8px 0;
+    font-size: 1.1em;
+    color: #a0a0a0; /* Cor um pouco mais clara para os detalhes */
+}
+
+#game-state span, .attribute span {
+    color: #eee; /* Cores mais claras para os valores */
+    font-weight: bold;
+}
+
+button:not(.tab-button) { /* Estilo para botões de ação e upgrade */
+    display: inline-block;
+    background-color: var(--purple-neon); /* Botões de ação em roxo neon */
+    color: var(--deep-space); /* Texto escuro nos botões */
+    padding: 12px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
-    margin-right: 10px; /* Espaço entre botões */
-    transition: background-color 0.3s ease; /* Efeito suave ao passar o mouse */
+    margin-right: 10px;
+    margin-top: 10px; /* Espaço acima dos botões */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 8px var(--glow-color); /* Brilho nos botões */
+    font-weight: bold;
 }
 
-button:hover:not(:disabled) {
-    background-color: #4cae4c; /* Verde mais escuro no hover */
+button:not(.tab-button):hover:not(:disabled) {
+    background-color: #ff33ff; /* Roxo mais claro no hover */
+    box-shadow: 0 0 12px var(--purple-neon); /* Brilho mais intenso no hover */
 }
 
-button:disabled {
-    background-color: #d3d3d3; /* Cinza quando desabilitado */
+button:not(.tab-button):disabled {
+    background-color: #555; /* Cinza escuro quando desabilitado */
+    color: #333;
     cursor: not-allowed;
+    box-shadow: none; /* Remove brilho quando desabilitado */
 }
 
 .attribute {
-    border: 1px solid #eee;
+    border: 1px solid var(--glow-color); /* Borda brilhante nos atributos */
     padding: 15px;
     margin-bottom: 15px;
     border-radius: 5px;
-    background-color: #f9f9f9;
-}
-
-.attribute p {
-    margin: 5px 0;
+    background-color: rgba(75, 0, 130, 0.3); /* Fundo semi-transparente roxo escuro */
 }
 
 /* Estilo para a área de notificações */
 #notification-area {
     margin-top: 15px;
-    max-height: 200px; /* Limita a altura da área de notificações */
-    overflow-y: auto; /* Adiciona barra de rolagem se as notificações excederem a altura */
+    max-height: 250px; /* Aumenta um pouco a altura */
+    overflow-y: auto;
+    padding-right: 10px; /* Espaço para a barra de rolagem */
+}
+
+#notification-area::-webkit-scrollbar {
+    width: 8px;
+}
+
+#notification-area::-webkit-scrollbar-track {
+    background: var(--dark-purple);
+    border-radius: 10px;
+}
+
+#notification-area::-webkit-scrollbar-thumb {
+    background: var(--purple-neon);
+    border-radius: 10px;
+    box-shadow: 0 0 5px var(--glow-color);
 }
 
 .notification {
-    background-color: #dff0d8; /* Verde claro */
-    color: #3c763d; /* Verde escuro */
+    background-color: rgba(238, 0, 255, 0.1); /* Fundo levemente neon */
+    color: #eee; /* Cor do texto */
     padding: 10px;
     margin-bottom: 10px;
-    border: 1px solid #d6e9c6; /* Borda verde */
+    border: 1px solid var(--glow-color); /* Borda brilhante */
     border-radius: 4px;
     opacity: 1;
-    transition: opacity 0.5s ease-out; /* Transição para o fade-out */
+    transition: opacity 0.5s ease-out;
+    box-shadow: 0 0 5px rgba(238, 0, 255, 0.3); /* Brilho suave na notificação */
 }
 
 .notification.error {
-    background-color: #f2dede; /* Vermelho claro */
-    color: #a94442; /* Vermelho escuro */
-    border-color: #ebccd1; /* Borda vermelha */
+    background-color: rgba(255, 0, 0, 0.1); /* Vermelho leve */
+    color: #ff8888; /* Vermelho claro */
+    border-color: rgba(255, 0, 0, 0.6);
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
 }
 
 .notification.info {
-     background-color: #d9edf7; /* Azul claro */
-     color: #31708f; /* Azul escuro */
-     border-color: #bce8f1; /* Borda azul */
+     background-color: rgba(0, 191, 255, 0.1); /* Azul claro leve */
+     color: #88eeff; /* Azul claro */
+     border-color: rgba(0, 191, 255, 0.6);
+     box-shadow: 0 0 5px rgba(0, 191, 255, 0.5);
  }
 
 
