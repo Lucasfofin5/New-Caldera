@@ -1,26 +1,29 @@
-/* css/style.css - Tema Neon Roxo Pixel Art - Painel Tycoon - Layout da Imagem */
+/* css/style.css - Tema Neon Roxo Pixel Art - Layout Final Refinado */
 
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 :root {
     --purple-neon: #ee00ff;
-    --dark-purple: rgba(75, 0, 130, 0.9); /* Roxo mais escuro com mais opacidade */
+    --dark-purple: rgba(75, 0, 130, 0.95); /* Mais opacidade */
     --deep-space: #1a1a2e;
-    --glow-color: rgba(238, 0, 255, 0.6);
+    --glow-color: rgba(238, 0, 255, 0.7); /* Brilho mais intenso */
     --text-color: #00ff00; /* Verde neon */
     --ui-color: #00ffff; /* Ciano neon */
     --error-color: #ff0000; /* Vermelho neon */
     --info-color: #ffff00; /* Amarelo neon */
-    --panel-bg: rgba(30, 0, 50, 0.9); /* Fundo para painéis internos com mais opacidade */
-    --border-color: var(--purple-neon); /* Cor padrão para bordas */
-    --header-height: 60px; /* Altura aproximada dos elementos do topo */
-    --footer-height: 50px; /* Altura aproximada dos elementos do rodapé */
-    --panel-width: 350px; /* Largura do painel lateral */
+    --panel-bg: rgba(30, 0, 50, 0.95); /* Mais opacidade para painéis internos */
+    --border-color: var(--purple-neon);
+    --header-height: 50px;
+    --footer-height: 50px; /* Volta para 50px, como na imagem */
+    --panel-width: 320px; /* Largura ligeiramente diferente */
+    --corner-radius: 4px; /* Raio de canto sutil, mais "blocudo" */
+    --border-thickness: 2px; /* Espessura da borda */
+    --glow-spread: 8px; /* Espalhamento do brilho */
 }
 
 body {
     font-family: 'Press Start 2P', cursive;
-    line-height: 1.8;
+    line-height: 1.6;
     margin: 0;
     padding: 0;
     background-color: var(--deep-space);
@@ -29,7 +32,6 @@ body {
     position: relative;
     width: 100vw;
     height: 100vh;
-    /* Removendo flexbox do body, pois os elementos internos serão posicionados */
     image-rendering: pixelated;
 }
 
@@ -57,36 +59,41 @@ body {
     image-rendering: pixelated;
 }
 
-/* Contêiner principal da UI */
 #game-ui {
-    position: relative; /* Para posicionar elementos filhos absolutamente dentro */
+    position: relative;
     width: 100%;
     height: 100%;
-    z-index: 1; /* Garante que a UI fique acima do vídeo */
-    pointer-events: none; /* Permite cliques passarem por #game-ui */
+    z-index: 1;
+    pointer-events: none;
 }
 
 #game-ui > div {
-    pointer-events: auto; /* Permite cliques nos elementos filhos específicos */
-    box-sizing: border-box; /* Inclui padding e border no tamanho */
+    pointer-events: auto;
+    box-sizing: border-box;
+    border-radius: var(--corner-radius);
+    border: var(--border-thickness) solid var(--border-color); /* Aplica borda padrão */
+    box-shadow: 0 0 var(--glow-spread) var(--glow-color); /* Aplica sombra/brilho padrão */
+    background-color: var(--panel-bg); /* Fundo padrão */
+    padding: 10px; /* Padding padrão para painéis */
+    display: flex; /* Usa flexbox para layouts internos */
+    flex-direction: column; /* Layout em coluna por padrão */
+    align-items: flex-start; /* Alinha itens ao início por padrão */
 }
 
-
-/* --- Posicionamento dos Elementos Fixos --- */
+/* --- Posicionamento dos Elementos Fixos (Ajuste Fino) --- */
 
 /* Top Left: Status de Dinheiro */
 #status-panel {
     position: absolute;
-    top: 15px;
+    top: 15px; /* Espaçamento como na imagem */
     left: 15px;
-    background-color: var(--panel-bg);
-    border: 2px solid var(--border-color);
-    box-shadow: 0 0 10px var(--glow-color);
-    padding: 10px 15px;
+    /* Tamanho e padding ajustados */
+    padding: 8px 12px;
 }
 
 #status-panel p {
-    margin: 5px 0;
+    margin: 0; /* Remove margem padrão */
+    line-height: 1.2; /* Espaçamento menor entre linhas */
     font-size: 0.9em;
     color: var(--text-color);
 }
@@ -103,28 +110,31 @@ body {
     position: absolute;
     top: 15px;
     left: 50%;
-    transform: translateX(-50%); /* Centraliza */
-    width: 200px; /* Largura da barra */
+    transform: translateX(-50%);
+    width: 200px; /* Largura como na imagem */
     text-align: center;
-    color: #ff00ff; /* Roxo neon para o texto da barra */
+    color: #ff00ff;
     font-size: 0.8em;
+     padding: 5px 10px; /* Padding menor */
 }
 
 #heat-bar {
     width: 100%;
-    height: 10px;
-    background-color: rgba(255, 0, 255, 0.2); /* Fundo da barra */
-    border: 1px solid #ff00ff; /* Borda roxa neon */
-    margin-top: 5px;
+    height: 12px; /* Altura maior */
+    background-color: rgba(255, 0, 255, 0.2);
+    border: 1px solid #ff00ff;
+    margin-top: 4px;
+    border-radius: 4px;
     overflow: hidden;
+    box-shadow: none; /* Remove sombra padrão */
 }
 
 #heat-level {
     height: 100%;
-    width: 0%; /* Começa em 0% */
-    background-color: #ff00ff; /* Cor da barra preenchida */
-    transition: width 0.5s ease-out; /* Animação ao mudar */
-    box-shadow: 0 0 5px #ff00ff;
+    width: 0%;
+    background-color: #ff00ff;
+    transition: width 0.5s ease-out;
+    box-shadow: 0 0 5px #ff00ff; /* Adiciona brilho ao preenchimento */
 }
 
 
@@ -133,12 +143,10 @@ body {
     position: absolute;
     top: 15px;
     right: 15px;
-    background-color: var(--panel-bg);
-    border: 2px solid var(--border-color);
-    box-shadow: 0 0 10px var(--glow-color);
-    padding: 10px 15px;
-    color: var(--error-color); /* Exemplo de cor para risco */
-    font-size: 0.9em;
+    /* Tamanho e padding ajustados */
+    padding: 8px 12px;
+    color: var(--error-color);
+    font-size: 0.8em;
 }
  #top-right-info span {
       color: var(--error-color);
@@ -150,147 +158,194 @@ body {
 /* Painel Principal à Direita (Conteúdo das Abas) */
 #main-panel {
     position: absolute;
-    top: var(--header-height); /* Abaixo dos elementos do topo */
-    right: 0;
+    top: var(--header-height);
+    right: 15px; /* Distância da direita */
     width: var(--panel-width);
-    bottom: var(--footer-height); /* Acima dos elementos do rodapé */
-    background-color: var(--panel-bg);
-    border-left: 2px solid var(--border-color); /* Borda apenas à esquerda */
-    box-shadow: 0 0 15px var(--glow-color);
-    padding: 20px;
-    overflow-y: auto; /* Adiciona rolagem se o conteúdo for muito longo */
+    bottom: var(--footer-height);
+    /* Fundo, borda, sombra/brilho e border-radius já aplicados pelo seletor geral */
+    padding: 15px; /* Padding interno do conteúdo */
+    overflow-y: auto;
+     /* Remove flexbox padrão seletor geral */
+     display: block;
 }
 
 #main-panel h2 {
-    margin-top: 0; /* Remove margem superior extra */
+    color: var(--ui-color); /* Títulos de seção ciano neon */
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
+    border-bottom: 1px solid var(--glow-color);
+    padding-bottom: 8px; /* Padding menor */
+    margin-bottom: 15px; /* Margem menor */
+    font-size: 1.1em; /* Fonte menor */
+    margin-top: 0;
 }
 
-/* Estilo da barra de rolagem para o painel principal */
+/* Estilo da barra de rolagem */
 #main-panel::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
 }
 
 #main-panel::-webkit-scrollbar-track {
     background: rgba(75, 0, 130, 0.5);
+    border-radius: 3px;
 }
 
 #main-panel::-webkit-scrollbar-thumb {
     background: var(--purple-neon);
-    box-shadow: 0 0 5px var(--glow-color);
+    box-shadow: 0 0 4px var(--glow-color);
+    border-radius: 3px;
 }
 
 
-/* Bottom Center: Botões das Abas */
+/* Bottom Center: Botões das Abas com Ícones */
 #bottom-tabs {
     position: absolute;
-    bottom: 15px;
+    bottom: 15px; /* Espaçamento como na imagem */
     left: 50%;
-    transform: translateX(-50%); /* Centraliza */
+    transform: translateX(-50%);
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    background-color: var(--panel-bg); /* Fundo semi-transparente para a barra de abas */
-    border: 2px solid var(--border-color);
-    box-shadow: 0 0 10px var(--glow-color);
-    padding: 5px 10px;
+    /* Fundo, borda, sombra/brilho e border-radius já aplicados pelo seletor geral */
+    padding: 5px; /* Padding interno */
 }
 
 .tab-button {
     background-color: transparent;
-    color: var(--text-color);
-    padding: 8px 12px; /* Ajusta padding dos botões */
+    padding: 0; /* Remove padding do botão, imagem controlará o tamanho visual */
     border: none;
-    border-bottom: 3px solid transparent;
     cursor: pointer;
-    font-size: 0.9em; /* Ajusta tamanho da fonte */
-    margin: 0 5px; /* Espaço horizontal menor entre botões */
+    font-size: 0; /* Esconde qualquer espaço de texto remanescente */
+    margin: 0 5px; /* Espaço horizontal entre botões */
     transition: all 0.2s ease;
-    font-family: 'Press Start 2P', cursive;
+    display: flex; /* Usa flexbox para centralizar a imagem */
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--corner-radius); /* Cantos arredondados */
+    width: 40px; /* Tamanho fixo para o botão */
+    height: 40px; /* Tamanho fixo para o botão */
+    /* Removendo borda e sombra padrão, estilizar a aba ativa/hover separadamente */
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+}
+
+.tab-button img {
+    display: block;
+    width: 30px; /* Tamanho do ícone */
+    height: 30px; /* Tamanho do ícone */
+    object-fit: contain;
+    image-rendering: pixelated;
+    filter: brightness(0.8); /* Deixa o ícone um pouco escuro por padrão */
+    transition: filter 0.2s ease;
 }
 
 .tab-button:hover:not(:disabled) {
-    color: var(--ui-color);
-    text-shadow: 0 0 5px rgba(0, 255, 255, 0.6);
+     background-color: rgba(0, 255, 255, 0.1); /* Fundo leve no hover */
+}
+
+.tab-button:hover:not(:disabled) img {
+    filter: brightness(1); /* Brilha o ícone no hover */
 }
 
 .tab-button.active {
-    color: var(--ui-color);
-    border-bottom-color: var(--ui-color);
-    text-shadow: 0 0 5px rgba(0, 255, 255, 0.6);
-    background-color: rgba(0, 255, 255, 0.1);
+    background-color: rgba(0, 255, 255, 0.2); /* Fundo mais forte para aba ativa */
+    border: 1px solid var(--ui-color); /* Borda neon para aba ativa */
+    box-shadow: 0 0 6px var(--ui-color); /* Brilho para aba ativa */
+}
+
+.tab-button.active img {
+     filter: brightness(1.2); /* Brilha mais o ícone na aba ativa */
 }
 
 .tab-button:disabled {
-    color: #555;
+    background-color: #555;
     cursor: not-allowed;
+    border: none; /* Remove borda */
+    box-shadow: none; /* Remove brilho */
+}
+.tab-button:disabled img {
+     filter: grayscale(100%);
 }
 
 
 /* Bottom Left: Ícone de Configurações */
 #settings-icon {
     position: absolute;
-    bottom: 15px;
+    bottom: 15px; /* Espaçamento como na imagem */
     left: 15px;
-    font-size: 1.8em; /* Tamanho do ícone */
+    font-size: 1.8em;
     cursor: pointer;
-    color: var(--ui-color); /* Cor do ícone */
+    color: var(--ui-color);
     text-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
     transition: text-shadow 0.2s ease;
+    /* Removendo fundo, borda, sombra/brilho e padding padrão */
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
 }
 
 #settings-icon:hover {
-    text-shadow: 0 0 12px var(--ui-color); /* Brilho no hover */
+    text-shadow: 0 0 12px var(--ui-color);
 }
 
 
 /* Bottom Right: Versão do Jogo */
 #version-info {
     position: absolute;
-    bottom: 15px;
+    bottom: 15px; /* Espaçamento como na imagem */
     right: 15px;
     font-size: 0.7em;
-    color: #888; /* Cor mais suave */
+    color: #888;
+    /* Removendo fundo, borda, sombra/brilho e padding padrão */
+     background-color: transparent;
+     border: none;
+     box-shadow: none;
+     padding: 0;
 }
+
 
 /* --- Estilos para o Conteúdo das Abas dentro do Painel Principal --- */
 
 #tab-content {
-    /* Não precisa de flex-grow aqui, pois o painel principal tem overflow */
-    padding-top: 0; /* Remove padding superior extra */
+    flex-grow: 1; /* Permite que o conteúdo da aba ocupe o espaço restante */
+    padding-top: 0;
 }
 
 .tab-pane {
     display: none;
-    padding: 0; /* Remove padding interno do painel, já que o painel principal tem padding */
-    background-color: transparent; /* Fundo transparente, usa o fundo do painel principal */
-    border: none; /* Remove borda */
+    padding: 0; /* Conteúdo dentro do painel principal */
+    background-color: transparent;
+    border: none;
+    flex-direction: column; /* Conteúdo da aba em coluna */
+    width: 100%; /* Ocupa a largura total do painel */
 }
 
 .tab-pane.active {
-    display: block;
+    display: flex; /* Usa flexbox para exibir e organizar o conteúdo */
 }
 
 /* Aba Estado (Painel de Gestão) */
 #state-summary {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Colunas menores para o painel lateral */
-    gap: 10px; /* Espaço entre os itens */
-    margin-bottom: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); /* Colunas ajustadas */
+    gap: 8px;
+    margin-bottom: 15px;
 }
 
 #state-summary p {
-    background-color: rgba(0, 255, 0, 0.1); /* Fundo leve */
+    background-color: rgba(0, 255, 0, 0.1);
     border: 1px solid var(--text-color);
-    padding: 8px; /* Padding menor */
+    padding: 6px;
     text-align: center;
-    font-size: 0.9em;
-    margin: 0; /* Remove margem padrão */
+    font-size: 0.8em;
+    margin: 0;
+    border-radius: var(--corner-radius);
 }
 
 #state-summary span {
-    display: block;
-    font-size: 1em;
-    margin-top: 3px; /* Espaço menor */
+    font-size: 0.9em;
+    margin-top: 2px;
     color: var(--ui-color);
     text-shadow: 0 0 4px rgba(0, 255, 255, 0.5);
 }
@@ -298,45 +353,47 @@ body {
 
 /* Aba Operações */
 .action-item {
-     background-color: rgba(0, 255, 255, 0.1); /* Fundo leve */
+     background-color: rgba(0, 255, 255, 0.1);
      border: 1px solid var(--ui-color);
-     padding: 12px; /* Padding menor */
-     margin-bottom: 10px; /* Margem menor */
+     padding: 10px;
+     margin-bottom: 8px;
      display: flex;
      justify-content: space-between;
      align-items: center;
      flex-wrap: wrap;
+     border-radius: var(--corner-radius);
 }
 
 .action-item p {
     margin: 0;
-    font-size: 0.9em; /* Tamanho da fonte */
+    font-size: 0.9em;
     color: var(--text-color);
 }
 
 /* Botões de ação e upgrade */
-button:not(.tab-button) {
+button:not(.tab-button):not(#settings-icon) { /* Exclui ícone de settings */
     display: inline-block;
     background-color: var(--ui-color);
     color: var(--deep-space);
-    padding: 8px 12px; /* Ajusta padding */
+    padding: 6px 10px;
     border: none;
     cursor: pointer;
-    font-size: 0.8em; /* Ajusta tamanho da fonte */
-    margin-left: 10px;
-    margin-top: 0; /* Remove margem superior se flex wrap */
+    font-size: 0.7em;
+    margin-left: 8px;
+    margin-top: 4px;
     transition: background-color 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 0 6px rgba(0, 255, 255, 0.5);
+    box-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
     font-weight: bold;
     font-family: 'Press Start 2P', cursive;
+    border-radius: var(--corner-radius);
 }
 
-button:not(.tab-button):hover:not(:disabled) {
+button:not(.tab-button):not(#settings-icon):hover:not(:disabled) {
     background-color: #00ffff;
-    box-shadow: 0 0 10px var(--ui-color);
+    box-shadow: 0 0 8px var(--ui-color);
 }
 
-button:not(.tab-button):disabled {
+button:not(.tab-button):not(#settings-icon):disabled {
     background-color: #555;
     color: #333;
     cursor: not-allowed;
@@ -346,19 +403,20 @@ button:not(.tab-button):disabled {
 
 /* Aba Habilidades */
 .attribute-item {
-     background-color: rgba(238, 0, 255, 0.1); /* Fundo leve roxo */
+     background-color: rgba(238, 0, 255, 0.1);
      border: 1px solid var(--purple-neon);
-     padding: 12px; /* Padding menor */
-     margin-bottom: 10px; /* Margem menor */
+     padding: 10px;
+     margin-bottom: 8px;
      display: grid;
      grid-template-columns: 1fr auto;
-     gap: 8px; /* Espaço menor */
+     gap: 6px;
      align-items: center;
+     border-radius: var(--corner-radius);
 }
 
 .attribute-item p {
     margin: 0;
-    font-size: 0.9em; /* Tamanho da fonte */
+    font-size: 0.9em;
     color: var(--text-color);
 }
 
@@ -371,56 +429,66 @@ button:not(.tab-button):disabled {
 .attribute-item button.upgrade-button {
      grid-column: 2 / 3;
      margin: 0;
-     padding: 8px 12px; /* Padding menor */
-     font-size: 0.8em; /* Tamanho da fonte */
+     padding: 6px 10px;
+     font-size: 0.8em;
 }
 
 /* Aba Log (Notificações) */
 #notification-area {
     margin-top: 0;
-    max-height: calc(100vh - var(--header-height) - var(--footer-height) - 40px - 30px); /* Ajusta altura máxima dinamicamente */
+    /* Ajusta altura máxima dinâmica */
+    max-height: calc(100vh - var(--header-height) - var(--footer-height) - 30px - 30px - 15px); /* Subtrai padding do painel e margem do h2 */
     overflow-y: auto;
-    padding-right: 8px; /* Padding menor para scrollbar */
+    padding-right: 6px;
+    /* Remove fundo, borda, sombra/brilho e padding padrão */
+     background-color: transparent;
+     border: none;
+     box-shadow: none;
+     padding-left: 0;
+     padding-bottom: 0;
 }
 
 /* Estilo da barra de rolagem */
 #notification-area::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
 }
 
 #notification-area::-webkit-scrollbar-track {
     background: rgba(75, 0, 130, 0.5);
+    border-radius: 3px;
 }
 
 #notification-area::-webkit-scrollbar-thumb {
     background: var(--purple-neon);
-    box-shadow: 0 0 5px var(--glow-color);
+    box-shadow: 0 0 4px var(--glow-color);
+    border-radius: 3px;
 }
 
 /* Estilo das notificações */
 .notification {
     background-color: rgba(238, 0, 255, 0.1);
     color: var(--text-color);
-    padding: 8px; /* Padding menor */
-    margin-bottom: 8px; /* Margem menor */
+    padding: 6px;
+    margin-bottom: 6px;
     border: 1px solid var(--glow-color);
     opacity: 1;
     transition: opacity 0.5s ease-out;
-    box-shadow: 0 0 4px rgba(238, 0, 255, 0.3);
+    box-shadow: 0 0 3px rgba(238, 0, 255, 0.3);
+    border-radius: 3px;
 }
 
 .notification.error {
     background-color: rgba(255, 0, 0, 0.1);
     color: var(--error-color);
     border-color: var(--error-color);
-    box-shadow: 0 0 4px rgba(255, 0, 0, 0.5);
+    box-shadow: 0 0 3px rgba(255, 0, 0, 0.5);
 }
 
 .notification.info {
      background-color: rgba(0, 191, 255, 0.1);
      color: var(--info-color);
      border-color: var(--info-color);
-     box-shadow: 0 0 4px rgba(0, 191, 255, 0.5);
+     box-shadow: 0 0 3px rgba(0, 191, 255, 0.5);
  }
 
 .notification.fading {
