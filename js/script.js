@@ -13,8 +13,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Configura o sistema de abas
     setupTabs(); // Função do tabs.js
 
+    // Inicializa o mapa
+    map.init(); // <--- CHAMADA PARA INICIALIZAR O MAPA
+
     // Inicia o loop principal do jogo (ganho de dinheiro por segundo)
     gameLoop.start();
 
     console.log("NEW CALDERA iniciado!");
+
+    // Exemplo: Adicionar um caminhão a cada 5 segundos para testar a animação básica
+    // setInterval(() => {
+    //     map.addTruck();
+    // }, 5000);
 });
