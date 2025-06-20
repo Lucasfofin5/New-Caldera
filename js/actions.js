@@ -11,10 +11,10 @@ function washMoney() {
         ui.updateUI(); // Atualiza a interface após a lavagem
         notifications.addNotification(`Você lavou $${washAmount}!`);
 
-        // Trigger da animação do caminhão no mapa
-        if (map && map.addTruck) { // Verifica se o objeto map e a função existem
-             map.addTruck();
-        }
+        // Remova a chamada para adicionar caminhão aqui:
+        // if (map && map.addTruck) {
+        //      map.addTruck();
+        // }
 
     } else {
         notifications.addNotification("Dinheiro sujo insuficiente para lavar.", 'error'); // Adiciona um tipo de erro para estilizar
