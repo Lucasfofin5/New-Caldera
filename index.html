@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEW CALDERA</title>
     <link rel="stylesheet" href="css/style.css">
-    <!-- Importe a fonte pixel art aqui também se não estiver no CSS -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
 </head>
 <body>
@@ -14,51 +13,55 @@
     <div id="video-background">
         <video autoplay loop muted playsinline>
             <source src="https://i.imgur.com/5bTQrQe.mp4" type="video/mp4">
-            <!-- Adicione outras fontes se necessário (webm, etc.) -->
             Seu navegador não suporta vídeos em HTML5.
         </video>
     </div>
 
-    <!-- Conteúdo do Jogo Flutuante -->
+    <!-- Conteúdo do Jogo Flutuante - O Painel Tycoon -->
     <div class="container">
         <h1>NEW CALDERA</h1>
 
-        <!-- Botões das Abas -->
+        <!-- Botões das Abas/Opções -->
         <div id="tabs">
+            <!-- Aba Estado - Ativa por padrão -->
             <button class="tab-button active" data-tab="state">Estado</button>
-            <button class="tab-button" data-tab="actions">Ações</button>
-            <button class="tab-button" data-tab="attributes">Atributos</button>
-            <button class="tab-button" data-tab="notifications">Notificações</button>
-            <!-- A aba Mapa agora é visualizada no fundo, podemos renomear ou remover se preferir -->
-            <!-- <button class="tab-button" data-tab="map">Mapa</button> -->
+            <button class="tab-button" data-tab="actions">Operações</button> <!-- Renomeado para Operações -->
+            <button class="tab-button" data-tab="attributes">Habilidades</button> <!-- Renomeado para Habilidades -->
+            <button class="tab-button" data-tab="notifications">Log</button> <!-- Renomeado para Log -->
         </div>
 
-        <!-- Conteúdo das Abas -->
+        <!-- Conteúdo das Abas/Opções -->
         <div id="tab-content">
-            <!-- Aba Estado - Ativa por padrão para começar na tela de status -->
+            <!-- Aba Estado: Dashboard Principal -->
             <div id="state" class="tab-pane active">
-                <h2>Estado Atual</h2>
-                <p>Dinheiro Sujo: $<span id="money">0</span></p>
-                <p>Dinheiro Limpo: $<span id="launderedMoney">0</span></p>
-                <p>Renda por Segundo: $<span id="incomePerSecond">1</span></p>
+                <h2>Painel de Gestão</h2>
+                <div id="state-summary">
+                    <p>Dinheiro Sujo: $<span id="money">0</span></p>
+                    <p>Dinheiro Limpo: $<span id="launderedMoney">0</span></p>
+                    <p>Renda por Segundo: $<span id="incomePerSecond">1</span></p>
+                </div>
+                 <!-- Podemos adicionar gráficos, resumo de objetivos aqui depois -->
             </div>
 
-            <!-- Aba Ações -->
+            <!-- Aba Operações (Antes Ações) -->
             <div id="actions" class="tab-pane">
-                <h2>Ações</h2>
-                <button id="wash-money-button">Lavar Dinheiro (Custo: $<span id="wash-cost">?</span>)</button>
-                <!-- Podemos adicionar outras ações aqui depois -->
+                <h2>Operações Clandestinas</h2>
+                <div class="action-item">
+                    <p>Lavar Dinheiro</p>
+                    <button id="wash-money-button">Executar (Custo: $<span id="wash-cost">?</span>)</button>
+                    <!-- Podemos adicionar outras ações aqui depois -->
+                </div>
             </div>
 
-            <!-- Aba Atributos -->
+            <!-- Aba Habilidades (Antes Atributos) -->
             <div id="attributes" class="tab-pane">
-                <h2>Atributos</h2>
-                <div class="attribute">
+                <h2>Desenvolvimento de Habilidades</h2>
+                <div class="attribute-item"> <!-- Mudança de nome de classe -->
                     <p>Falsificação: Nível <span id="attr-falsification-level">0</span></p>
                     <p>Bônus Renda: +$<span id="attr-falsification-bonus">0</span>/segundo</p>
                     <button class="upgrade-button" data-attribute="falsification">Melhorar (Custo: $<span id="attr-falsification-cost">?</span> Dinheiro Limpo)</button>
                 </div>
-                <div class="attribute">
+                <div class="attribute-item"> <!-- Mudança de nome de classe -->
                     <p>Influência: Nível <span id="attr-influence-level">0</span></p>
                     <p>Bônus Renda: +$<span id="attr-influence-bonus">0</span>/segundo</p>
                     <button class="upgrade-button" data-attribute="influence">Melhorar (Custo: $<span id="attr-influence-cost">?</span> Dinheiro Limpo)</button>
@@ -66,16 +69,13 @@
                 <!-- Adicionar mais atributos conforme necessário -->
             </div>
 
-            <!-- Aba Notificações -->
+            <!-- Aba Log (Antes Notificações) -->
             <div id="notifications" class="tab-pane">
-                <h2>Notificações</h2>
+                <h2>Registro de Eventos</h2>
                 <div id="notification-area">
                     <!-- Notificações aparecerão aqui -->
                 </div>
             </div>
-
-            <!-- Removendo a aba Mapa como conteúdo separado, já que é o fundo -->
-             <!-- <div id="map" class="tab-pane"> ... </div> -->
         </div>
     </div>
 
@@ -86,8 +86,6 @@
     <script src="js/gameLoop.js"></script>
     <script src="js/actions.js"></script>
     <script src="js/tabs.js"></script>
-    <!-- Remove a referência ao map.js anterior -->
-    <!-- <script src="js/map.js"></script> -->
     <script src="js/script.js"></script>
 </body>
 </html>
