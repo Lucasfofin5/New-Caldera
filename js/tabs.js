@@ -18,15 +18,21 @@ function setupTabs() {
 
             // Opcional: Disparar um evento ou chamar uma função quando a aba muda
             console.log(`Aba "${targetTab}" ativada.`);
-            // Se a aba 'mapa' for ativada, talvez carregar algo relacionado ao mapa
+            // Se a aba 'mapa' for ativada, podemos re-renderizar ou fazer algo específico
             if (targetTab === 'map') {
-                 // Lógica para exibir o mapa ou seu conteúdo inicial
+                 // map.draw(); // Pode ser útil forçar um redesenho se o canvas for sensível a ser ocultado/exibido
             }
         });
     });
 
-    // Ativa a primeira aba por padrão na inicialização
-    if (tabButtons.length > 0) {
-        tabButtons[0].click(); // Simula um clique no primeiro botão para ativá-lo
-    }
+    // Remova ou comente a linha abaixo:
+    // if (tabButtons.length > 0) {
+    //     tabButtons[0].click(); // Simula um clique no primeiro botão para ativá-lo
+    // }
+
+    // O estado inicial já está definido no HTML via class="active"
+    // Podemos, opcionalmente, chamar updateUI e updateCosts aqui
+    // para garantir que os valores das abas inicialmente invisíveis estejam corretos
+     ui.updateUI();
+     ui.updateCosts();
 }
