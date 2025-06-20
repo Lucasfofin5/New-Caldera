@@ -1,1 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEW CALDERA</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>NEW CALDERA</h1>
 
+        <div id="game-state">
+            <p>Dinheiro Sujo: $<span id="money">0</span></p>
+            <p>Dinheiro Limpo: $<span id="launderedMoney">0</span></p>
+            <p>Renda por Segundo: $<span id="incomePerSecond">1</span></p>
+        </div>
+
+        <div id="actions">
+            <h2>Ações</h2>
+            <button id="wash-money-button">Lavar Dinheiro (Custo: $<span id="wash-cost">?</span>)</button>
+            <!-- Podemos adicionar outras ações aqui depois -->
+        </div>
+
+        <div id="attributes">
+            <h2>Atributos</h2>
+            <div class="attribute">
+                <p>Falsificação: Nível <span id="attr-falsification-level">0</span></p>
+                <p>Bônus Renda: +$<span id="attr-falsification-bonus">0</span>/segundo</p>
+                <button class="upgrade-button" data-attribute="falsification">Melhorar (Custo: $<span id="attr-falsification-cost">?</span> Dinheiro Limpo)</button>
+            </div>
+            <div class="attribute">
+                <p>Influência: Nível <span id="attr-influence-level">0</span></p>
+                <p>Bônus Renda: +$<span id="attr-influence-bonus">0</span>/segundo</p>
+                <button class="upgrade-button" data-attribute="influence">Melhorar (Custo: $<span id="attr-influence-cost">?</span> Dinheiro Limpo)</button>
+            </div>
+            <!-- Adicionar mais atributos conforme necessário -->
+        </div>
+
+        <div id="notifications">
+            <h2>Notificações</h2>
+            <div id="notification-area">
+                <!-- Notificações aparecerão aqui -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/state.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/gameLoop.js"></script>
+    <script src="js/actions.js"></script> <!-- Novo arquivo para as ações -->
+    <script src="js/script.js"></script>
+</body>
+</html>
