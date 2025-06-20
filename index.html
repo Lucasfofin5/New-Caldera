@@ -17,67 +17,103 @@
         </video>
     </div>
 
-    <!-- Conteúdo do Jogo Flutuante - O Painel Tycoon -->
-    <div class="container">
-        <h1>NEW CALDERA</h1>
+    <!-- Interface do Jogo (Flutuante sobre o Fundo) -->
+    <div id="game-ui">
 
-        <!-- Botões das Abas/Opções -->
-        <div id="tabs">
-            <!-- Aba Estado - Ativa por padrão -->
-            <button class="tab-button active" data-tab="state">Estado</button>
-            <button class="tab-button" data-tab="actions">Operações</button> <!-- Renomeado para Operações -->
-            <button class="tab-button" data-tab="attributes">Habilidades</button> <!-- Renomeado para Habilidades -->
-            <button class="tab-button" data-tab="notifications">Log</button> <!-- Renomeado para Log -->
+        <!-- Top Left: Status de Dinheiro -->
+        <div id="status-panel">
+            <p>💰 $<span id="money">0</span></p>
+            <p>✨ $<span id="launderedMoney">0</span></p>
+            <!-- Renda por segundo pode ir aqui ou no painel principal -->
+            <!-- <p>Income: $<span id="incomePerSecond">1</span>/s</p> -->
         </div>
 
-        <!-- Conteúdo das Abas/Opções -->
-        <div id="tab-content">
-            <!-- Aba Estado: Dashboard Principal -->
-            <div id="state" class="tab-pane active">
-                <h2>Painel de Gestão</h2>
-                <div id="state-summary">
-                    <p>Dinheiro Sujo: $<span id="money">0</span></p>
-                    <p>Dinheiro Limpo: $<span id="launderedMoney">0</span></p>
-                    <p>Renda por Segundo: $<span id="incomePerSecond">1</span></p>
-                </div>
-                 <!-- Podemos adicionar gráficos, resumo de objetivos aqui depois -->
+        <!-- Top Center: Barra de Polícia (Placeholder) -->
+        <div id="police-heat-panel">
+            <p>POLICE HEAT</p>
+            <div id="heat-bar">
+                <div id="heat-level"></div>
             </div>
+        </div>
 
-            <!-- Aba Operações (Antes Ações) -->
-            <div id="actions" class="tab-pane">
-                <h2>Operações Clandestinas</h2>
-                <div class="action-item">
-                    <p>Lavar Dinheiro</p>
-                    <button id="wash-money-button">Executar (Custo: $<span id="wash-cost">?</span>)</button>
-                    <!-- Podemos adicionar outras ações aqui depois -->
-                </div>
-            </div>
+         <!-- Top Right: Placeholder ou Info (Ex: Nível de Risco Global) -->
+        <div id="top-right-info">
+             <p>💀 <span id="risk-level">0</span>%</p> <!-- Exemplo de risco -->
+        </div>
 
-            <!-- Aba Habilidades (Antes Atributos) -->
-            <div id="attributes" class="tab-pane">
-                <h2>Desenvolvimento de Habilidades</h2>
-                <div class="attribute-item"> <!-- Mudança de nome de classe -->
-                    <p>Falsificação: Nível <span id="attr-falsification-level">0</span></p>
-                    <p>Bônus Renda: +$<span id="attr-falsification-bonus">0</span>/segundo</p>
-                    <button class="upgrade-button" data-attribute="falsification">Melhorar (Custo: $<span id="attr-falsification-cost">?</span> Dinheiro Limpo)</button>
-                </div>
-                <div class="attribute-item"> <!-- Mudança de nome de classe -->
-                    <p>Influência: Nível <span id="attr-influence-level">0</span></p>
-                    <p>Bônus Renda: +$<span id="attr-influence-bonus">0</span>/segundo</p>
-                    <button class="upgrade-button" data-attribute="influence">Melhorar (Custo: $<span id="attr-influence-cost">?</span> Dinheiro Limpo)</button>
-                </div>
-                <!-- Adicionar mais atributos conforme necessário -->
-            </div>
 
-            <!-- Aba Log (Antes Notificações) -->
-            <div id="notifications" class="tab-pane">
-                <h2>Registro de Eventos</h2>
-                <div id="notification-area">
-                    <!-- Notificações aparecerão aqui -->
+        <!-- Painel Principal à Direita (Conteúdo das Abas) -->
+        <div id="main-panel">
+             <!-- O título do jogo pode ir aqui dentro ou ficar no topo -->
+             <!-- <h1>NEW CALDERA</h1> -->
+
+             <!-- Conteúdo das Abas (Dashboard, Operações, Habilidades, Log) -->
+            <div id="tab-content">
+                <!-- Aba Estado: Dashboard Principal -->
+                <div id="state" class="tab-pane active">
+                    <h2>Painel de Gestão</h2>
+                    <div id="state-summary">
+                        <p>Dinheiro Sujo: $<span id="money-summary">0</span></p> <!-- Novo ID para evitar conflito -->
+                        <p>Dinheiro Limpo: $<span id="launderedMoney-summary">0</span></p> <!-- Novo ID -->
+                        <p>Renda por Segundo: $<span id="incomePerSecond">1</span></p>
+                    </div>
+                </div>
+
+                <!-- Aba Operações -->
+                <div id="actions" class="tab-pane">
+                    <h2>Operações Clandestinas</h2>
+                    <div class="action-item">
+                        <p>Lavar Dinheiro</p>
+                        <button id="wash-money-button">Executar (Custo: $<span id="wash-cost">?</span>)</button>
+                    </div>
+                </div>
+
+                <!-- Aba Habilidades -->
+                <div id="attributes" class="tab-pane">
+                    <h2>Desenvolvimento de Habilidades</h2>
+                    <div class="attribute-item">
+                        <p>Falsificação: Nível <span id="attr-falsification-level">0</span></p>
+                        <p>Bônus Renda: +$<span id="attr-falsification-bonus">0</span>/segundo</p>
+                        <button class="upgrade-button" data-attribute="falsification">Melhorar (Custo: $<span id="attr-falsification-cost">?</span> Dinheiro Limpo)</button>
+                    </div>
+                    <div class="attribute-item">
+                        <p>Influência: Nível <span id="attr-influence-level">0</span></p>
+                        <p>Bônus Renda: +$<span id="attr-influence-bonus">0</span>/segundo</p>
+                        <button class="upgrade-button" data-attribute="influence">Melhorar (Custo: $<span id="attr-influence-cost">?</span> Dinheiro Limpo)</button>
+                    </div>
+                </div>
+
+                <!-- Aba Log -->
+                <div id="notifications" class="tab-pane">
+                    <h2>Registro de Eventos</h2>
+                    <div id="notification-area">
+                        <!-- Notificações aparecerão aqui -->
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+
+        <!-- Bottom Center: Botões das Abas -->
+        <div id="bottom-tabs">
+             <button class="tab-button active" data-tab="state">Estado</button>
+             <button class="tab-button" data-tab="actions">Operações</button>
+             <button class="tab-button" data-tab="attributes">Habilidades</button>
+             <button class="tab-button" data-tab="notifications">Log</button>
+             <!-- Adicionar outros botões de abas aqui -->
+        </div>
+
+        <!-- Bottom Left: Ícone de Configurações (Placeholder) -->
+        <div id="settings-icon">
+            ⚙️ <!-- Ícone de engrenagem -->
+        </div>
+
+        <!-- Bottom Right: Versão do Jogo (Placeholder) -->
+        <div id="version-info">
+            <p>v0.1 (Alpha)</p>
+        </div>
+
+    </div> <!-- Fim #game-ui -->
+
 
     <script src="js/config.js"></script>
     <script src="js/state.js"></script>
