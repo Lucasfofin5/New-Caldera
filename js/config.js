@@ -1,21 +1,21 @@
 // js/config.js
 
 const config = {
-    baseIncomePerSecond: 1, // Renda inicial por segundo
+    baseIncomePerSecond: 1,
 
     // Configurações de Lavagem de Dinheiro
-    washCost: 10, // Custo inicial para lavar dinheiro (sujo)
-    washAmount: 5, // Dinheiro limpo gerado pela lavagem inicial
+    washCost: 10,
+    washAmount: 5,
     washBaseRisk: 10, // % de risco base de ser pego ao lavar dinheiro
 
     // Configurações de Produção
     productionOptions: {
         "basic-documents": {
-            costType: 'launderedMoney', // Custo em dinheiro limpo
+            costType: 'launderedMoney',
             costAmount: 200,
-            yieldType: 'money', // Retorno em dinheiro sujo
+            yieldType: 'money',
             yieldAmount: 800,
-            time: 4000 // Tempo em milissegundos (4 segundos)
+            time: 4000
         },
         "premium-documents": {
             costType: 'launderedMoney',
@@ -24,40 +24,39 @@ const config = {
             yieldAmount: 1000,
             time: 4000
         }
-        // Adicionar outras opções de produção aqui
     },
-    productionSlots: 1, // Número de produções que podem rodar simultaneamente
+    productionSlots: 1,
 
     // Configurações de Atributos (Segurança)
-    attributeCosts: { // Custo para ir para o próximo nível (índice = nível atual)
+    attributeCosts: {
         falsification: [10, 20, 50, 100, 200, 500, 1000],
         influence: [15, 30, 75, 150, 300, 750, 1500],
-        intimidation: [25, 50, 100, 200, 400, 800, 1600] // Custos para o novo atributo
+        intimidation: [25, 50, 100, 200, 400, 800, 1600]
     },
-    attributeBonuses: { // Bônus de renda por segundo concedido por nível (índice = nível)
+    attributeBonuses: {
         falsification: [0, 0.5, 1, 2, 4, 8, 16],
         influence: [0, 0.7, 1.5, 3, 6, 12, 24],
-        intimidation: [0, 0, 0, 0, 0, 0, 0] // Intimidação não dá bônus de renda direto
+        intimidation: [0, 0, 0, 0, 0, 0, 0]
     },
-     attributeEffects: { // Outros efeitos dos atributos (índice = nível)
+     attributeEffects: {
          intimidation: {
              heatReduction: [0, 0.1, 0.2, 0.4, 0.8, 1.5, 3], // Quanto reduz o heat por segundo
-             bribeBonus: [0, 5, 10, 15, 20, 25, 30] // % de bônus na chance de suborno
+             bribeBonus: [0, 5, 10, 15, 20, 25, 30] // % de bônus na chance de NÃO ser pego na lavagem (diminui o risco)
          }
      },
 
 
     // Configurações de Polícia/Heat
-    policeHeatIncreasePerCaughtWash: 20, // Quanto aumenta o heat ao ser pego lavando
-    policeHeatDecayPerSecond: 0.05, // Quanto o heat diminui naturalmente por segundo
-    policeHeatMax: 100, // Nível máximo de heat
+    policeHeatIncreasePerCaughtWash: 20,
+    policeHeatDecayPerSecond: 0.05,
+    policeHeatMax: 100,
 
     // Configurações de Penalidades
-    policeFineCleanMoneyPercent: 0.5, // % do dinheiro limpo perdido como multa
-    policeConfiscateDirtyMoneyPercent: 1, // % do dinheiro sujo confiscado
+    policeFineCleanMoneyPercent: 0.5,
+    policeConfiscateDirtyMoneyPercent: 1,
 
     // Outros Stats Globais
-     baseBribeChance: 10, // Chance base de suborno (ainda não implementado)
+     // baseBribeChance: 10, // Removido, chance de suborno geral não está implementada ainda
 
-    notificationDuration: 5000 // Duração da notificação
+    notificationDuration: 5000
 };
