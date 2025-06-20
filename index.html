@@ -5,26 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NEW CALDERA</title>
     <link rel="stylesheet" href="css/style.css">
+    <!-- Importe a fonte pixel art aqui também se não estiver no CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
 </head>
 <body>
+
+    <!-- Fundo de Vídeo Pixel Art -->
+    <div id="video-background">
+        <video autoplay loop muted playsinline>
+            <source src="https://i.imgur.com/5bTQrQe.mp4" type="video/mp4">
+            <!-- Adicione outras fontes se necessário (webm, etc.) -->
+            Seu navegador não suporta vídeos em HTML5.
+        </video>
+    </div>
+
+    <!-- Conteúdo do Jogo Flutuante -->
     <div class="container">
         <h1>NEW CALDERA</h1>
 
         <!-- Botões das Abas -->
         <div id="tabs">
-            <!-- Remover 'active' daqui -->
-            <button class="tab-button" data-tab="state">Estado</button>
+            <button class="tab-button active" data-tab="state">Estado</button>
             <button class="tab-button" data-tab="actions">Ações</button>
             <button class="tab-button" data-tab="attributes">Atributos</button>
             <button class="tab-button" data-tab="notifications">Notificações</button>
-            <!-- Adicionar 'active' aqui -->
-            <button class="tab-button active" data-tab="map">Mapa</button>
+            <!-- A aba Mapa agora é visualizada no fundo, podemos renomear ou remover se preferir -->
+            <!-- <button class="tab-button" data-tab="map">Mapa</button> -->
         </div>
 
         <!-- Conteúdo das Abas -->
         <div id="tab-content">
-            <!-- Aba Estado - Remover 'active' daqui -->
-            <div id="state" class="tab-pane">
+            <!-- Aba Estado - Ativa por padrão para começar na tela de status -->
+            <div id="state" class="tab-pane active">
                 <h2>Estado Atual</h2>
                 <p>Dinheiro Sujo: $<span id="money">0</span></p>
                 <p>Dinheiro Limpo: $<span id="launderedMoney">0</span></p>
@@ -62,14 +74,8 @@
                 </div>
             </div>
 
-             <!-- Aba Mapa - Adicionar 'active' aqui -->
-            <div id="map" class="tab-pane active">
-                 <h2>Mapa da Cidade</h2>
-                 <!-- Adicione o canvas aqui -->
-                 <canvas id="mapCanvas"></canvas>
-                 <p>Aqui será o conteúdo do mapa, representando diferentes áreas da cidade onde ações podem ocorrer.</p>
-                 <!-- Conteúdo do mapa virá aqui -->
-            </div>
+            <!-- Removendo a aba Mapa como conteúdo separado, já que é o fundo -->
+             <!-- <div id="map" class="tab-pane"> ... </div> -->
         </div>
     </div>
 
@@ -80,7 +86,8 @@
     <script src="js/gameLoop.js"></script>
     <script src="js/actions.js"></script>
     <script src="js/tabs.js"></script>
-    <script src="js/map.js"></script> <!-- Certifique-se que map.js é carregado antes de script.js se script.js chamar map.init() -->
+    <!-- Remove a referência ao map.js anterior -->
+    <!-- <script src="js/map.js"></script> -->
     <script src="js/script.js"></script>
 </body>
 </html>
