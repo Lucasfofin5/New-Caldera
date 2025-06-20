@@ -10,37 +10,61 @@
     <div class="container">
         <h1>NEW CALDERA</h1>
 
-        <div id="game-state">
-            <p>Dinheiro Sujo: $<span id="money">0</span></p>
-            <p>Dinheiro Limpo: $<span id="launderedMoney">0</span></p>
-            <p>Renda por Segundo: $<span id="incomePerSecond">1</span></p>
+        <!-- Botões das Abas -->
+        <div id="tabs">
+            <button class="tab-button active" data-tab="state">Estado</button>
+            <button class="tab-button" data-tab="actions">Ações</button>
+            <button class="tab-button" data-tab="attributes">Atributos</button>
+            <button class="tab-button" data-tab="notifications">Notificações</button>
+            <button class="tab-button" data-tab="map">Mapa</button> <!-- Aba para o Mapa -->
         </div>
 
-        <div id="actions">
-            <h2>Ações</h2>
-            <button id="wash-money-button">Lavar Dinheiro (Custo: $<span id="wash-cost">?</span>)</button>
-            <!-- Podemos adicionar outras ações aqui depois -->
-        </div>
-
-        <div id="attributes">
-            <h2>Atributos</h2>
-            <div class="attribute">
-                <p>Falsificação: Nível <span id="attr-falsification-level">0</span></p>
-                <p>Bônus Renda: +$<span id="attr-falsification-bonus">0</span>/segundo</p>
-                <button class="upgrade-button" data-attribute="falsification">Melhorar (Custo: $<span id="attr-falsification-cost">?</span> Dinheiro Limpo)</button>
+        <!-- Conteúdo das Abas -->
+        <div id="tab-content">
+            <!-- Aba Estado -->
+            <div id="state" class="tab-pane active">
+                <h2>Estado Atual</h2>
+                <p>Dinheiro Sujo: $<span id="money">0</span></p>
+                <p>Dinheiro Limpo: $<span id="launderedMoney">0</span></p>
+                <p>Renda por Segundo: $<span id="incomePerSecond">1</span></p>
             </div>
-            <div class="attribute">
-                <p>Influência: Nível <span id="attr-influence-level">0</span></p>
-                <p>Bônus Renda: +$<span id="attr-influence-bonus">0</span>/segundo</p>
-                <button class="upgrade-button" data-attribute="influence">Melhorar (Custo: $<span id="attr-influence-cost">?</span> Dinheiro Limpo)</button>
-            </div>
-            <!-- Adicionar mais atributos conforme necessário -->
-        </div>
 
-        <div id="notifications">
-            <h2>Notificações</h2>
-            <div id="notification-area">
-                <!-- Notificações aparecerão aqui -->
+            <!-- Aba Ações -->
+            <div id="actions" class="tab-pane">
+                <h2>Ações</h2>
+                <button id="wash-money-button">Lavar Dinheiro (Custo: $<span id="wash-cost">?</span>)</button>
+                <!-- Podemos adicionar outras ações aqui depois -->
+            </div>
+
+            <!-- Aba Atributos -->
+            <div id="attributes" class="tab-pane">
+                <h2>Atributos</h2>
+                <div class="attribute">
+                    <p>Falsificação: Nível <span id="attr-falsification-level">0</span></p>
+                    <p>Bônus Renda: +$<span id="attr-falsification-bonus">0</span>/segundo</p>
+                    <button class="upgrade-button" data-attribute="falsification">Melhorar (Custo: $<span id="attr-falsification-cost">?</span> Dinheiro Limpo)</button>
+                </div>
+                <div class="attribute">
+                    <p>Influência: Nível <span id="attr-influence-level">0</span></p>
+                    <p>Bônus Renda: +$<span id="attr-influence-bonus">0</span>/segundo</p>
+                    <button class="upgrade-button" data-attribute="influence">Melhorar (Custo: $<span id="attr-influence-cost">?</span> Dinheiro Limpo)</button>
+                </div>
+                <!-- Adicionar mais atributos conforme necessário -->
+            </div>
+
+            <!-- Aba Notificações -->
+            <div id="notifications" class="tab-pane">
+                <h2>Notificações</h2>
+                <div id="notification-area">
+                    <!-- Notificações aparecerão aqui -->
+                </div>
+            </div>
+
+             <!-- Aba Mapa (Placeholder) -->
+            <div id="map" class="tab-pane">
+                 <h2>Mapa da Cidade</h2>
+                 <p>Aqui será o conteúdo do mapa, representando diferentes áreas da cidade onde ações podem ocorrer.</p>
+                 <!-- Conteúdo do mapa virá aqui -->
             </div>
         </div>
     </div>
@@ -50,7 +74,8 @@
     <script src="js/ui.js"></script>
     <script src="js/notifications.js"></script>
     <script src="js/gameLoop.js"></script>
-    <script src="js/actions.js"></script> <!-- Novo arquivo para as ações -->
+    <script src="js/actions.js"></script>
+    <script src="js/tabs.js"></script> <!-- Novo arquivo para a lógica das abas -->
     <script src="js/script.js"></script>
 </body>
 </html>
