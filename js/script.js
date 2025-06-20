@@ -2,22 +2,19 @@
 
 // Aguarda o DOM estar completamente carregado antes de inicializar
 document.addEventListener('DOMContentLoaded', () => {
-    // Remova a chamada map.init(); aqui:
-    // map.init();
+    // Inicializa o estado (carrega saves aqui depois)
+    // state = loadGame() || initialState; // Exemplo futuro de carregar save
 
-    // Inicializa o estado e a interface - Exibe os valores iniciais
+    // Configurações iniciais da UI e ações - Chamado antes do loop para exibir estado inicial
+    setupActionButtons(); // Configura listeners E chama updateIncomePerSecond/updateBribeChance E updateCosts/updateUI (inicial)
+    setupTabs(); // Configura listeners de abas E chama updateUI/updateCosts (garantia)
+
+    // Garante que a UI inicial esteja correta
     ui.updateUI();
-    // Inicializa a exibição dos custos e estado dos botões na UI
     ui.updateCosts();
 
-    // Configura os botões de ação (Lavagem e Upgrade) - Anexa os listeners
-    setupActionButtons(); // Função do actions.js
 
-    // Configura o sistema de abas - Gerencia a troca de abas
-    setupTabs(); // Função do tabs.js
-
-    // Inicia o loop principal do jogo (ganho de dinheiro por segundo)
-    // já está sendo iniciado DENTRO de gameLoop.start(), que é chamado aqui.
+    // Inicia o loop principal do jogo (ganho de dinheiro por segundo, produção, heat decay)
     gameLoop.start();
 
     console.log("NEW CALDERA iniciado!");
