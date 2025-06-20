@@ -2,8 +2,18 @@
 
 const ui = {
     updateUI: function() {
-        document.getElementById('money').innerText = state.money.toFixed(2); // Exibe com 2 casas decimais
+        // Atualiza os valores no painel de status superior
+        document.getElementById('money').innerText = state.money.toFixed(2);
         document.getElementById('launderedMoney').innerText = state.launderedMoney.toFixed(2);
+
+        // Atualiza os valores no painel de resumo na aba Estado
+        // Usando os novos IDs
+        const moneySummaryElement = document.getElementById('money-summary');
+        if (moneySummaryElement) moneySummaryElement.innerText = state.money.toFixed(2);
+
+        const launderedMoneySummaryElement = document.getElementById('launderedMoney-summary');
+        if (launderedMoneySummaryElement) launderedMoneySummaryElement.innerText = state.launderedMoney.toFixed(2);
+
         document.getElementById('incomePerSecond').innerText = state.incomePerSecond.toFixed(2);
 
         // Atualiza exibição dos atributos
@@ -15,14 +25,11 @@ const ui = {
 
             if (levelElement) levelElement.innerText = state.attributes[attr].level;
             if (bonusElement) {
-                 // Encontra o bônus para o nível atual do atributo
                  const currentBonus = config.attributeBonuses[attr][state.attributes[attr].level] || 0;
                  bonusElement.innerText = currentBonus.toFixed(2);
             }
 
-            // Atualiza o custo do próximo nível e estado do botão
-            const nextLevel = state.attributes[attr].level + 1;
-            const nextLevelCost = config.attributeCosts[attr][state.attributes[attr].level]; // Custo para *ir para* o próximo nível
+            const nextLevelCost = config.attributeCosts[attr][state.attributes[attr].level];
 
             if (costElement) {
                 if (nextLevelCost !== undefined) {
@@ -31,9 +38,9 @@ const ui = {
                          upgradeButton.disabled = state.launderedMoney < nextLevelCost;
                      }
                 } else {
-                     costElement.innerText = 'MAX'; // Indica que atingiu o nível máximo configurado
+                     costElement.innerText = 'MAX';
                      if (upgradeButton) {
-                         upgradeButton.disabled = true; // Desabilita o botão se for nível máximo
+                         upgradeButton.disabled = true;
                      }
                 }
             }
@@ -58,19 +65,19 @@ const ui = {
 
          for (const attr in state.attributes) {
              const costElement = document.getElementById(`attr-${attr}-cost`);
-             const nextLevelCost = config.attributeCosts[attr][state.attributes[attr].level]; // Custo para *ir para* o próximo nível
+             const nextLevelCost = config.attributeCosts[attr][state.attributes[attr].level];
               const upgradeButton = document.querySelector(`.upgrade-button[data-attribute="${attr}"]`);
 
              if (costElement) {
                  if (nextLevelCost !== undefined) {
                       costElement.innerText = nextLevelCost.toFixed(2);
                       if (upgradeButton) {
-                          upgradeButton.disabled = state.launderedMoney < nextLevelCost; // Desabilita se não tiver dinheiro
+                          upgradeButton.disabled = state.launderedMoney < nextLevelCost;
                       }
                  } else {
                       costElement.innerText = 'MAX';
                        if (upgradeButton) {
-                           upgradeButton.disabled = true; // Desabilita se for nível máximo
+                           upgradeButton.disabled = true;
                        }
                  }
              }
